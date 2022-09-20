@@ -48,7 +48,7 @@ Namespace TesterVB
                 Me.IsReadLineMode = False
                 MyBase.ClearUndo()
             End Try
-            Return New Range(Me, Me.StartReadPlace, MyBase.Range.[End]).Text.TrimEnd(New Char() {vbCr, vbLf})
+            Return New FastColoredTextBoxNS.Range(Me, Me.StartReadPlace, MyBase.Range.[End]).Text.TrimEnd(New Char() {vbCr, vbLf})
         End Function
 
         Public Overrides Sub OnTextChanging(ByRef text As String)

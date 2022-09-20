@@ -133,7 +133,7 @@ Namespace TesterVB
             End Sub
 
             Public Overrides Function Compare(fragmentText As String) As CompareResult
-                Dim r As Range = MyBase.Parent.Fragment.Clone()
+                Dim r As FastColoredTextBoxNS.Range = MyBase.Parent.Fragment.Clone()
                 Dim result As CompareResult
                 While r.Start.iChar > 0
                     If r.CharBeforeStart = "}" Then
@@ -148,7 +148,7 @@ Namespace TesterVB
             End Function
 
             Public Overrides Function GetTextForReplace() As String
-                Dim r As Range = MyBase.Parent.Fragment
+                Dim r As FastColoredTextBoxNS.Range = MyBase.Parent.Fragment
                 Dim [end] As Place = r.[End]
                 r.Start = Me.enterPlace
                 r.[End] = r.[End]
@@ -974,7 +974,7 @@ Namespace TesterVB
             Dim iGreenStyle As Integer = Me.CurrentTB.GetStyleIndex(Me.CurrentTB.SyntaxHighlighter.GreenStyle)
             If iGreenStyle >= 0 AndAlso Me.CurrentTB.Selection.Start.iChar > 0 Then
                 Dim c As FastColoredTextBoxNS.Char = Me.CurrentTB(Me.CurrentTB.Selection.Start.iLine)(Me.CurrentTB.Selection.Start.iChar - 1)
-                Dim greenStyleIndex As StyleIndex = Range.ToStyleIndex(iGreenStyle)
+                Dim greenStyleIndex As StyleIndex = FastColoredTextBoxNS.Range.ToStyleIndex(iGreenStyle)
                 If CUShort(c.style And greenStyleIndex) <> 0 Then
                     e.Cancel = True
                 End If
@@ -1031,7 +1031,7 @@ Namespace TesterVB
         Private Sub tb_MouseMove(sender As Object, e As MouseEventArgs)
             Dim tb As FastColoredTextBox = TryCast(sender, FastColoredTextBox)
             Dim place As Place = tb.PointToPlace(e.Location)
-            Dim r As Range = New Range(tb, place, place)
+            Dim r As FastColoredTextBoxNS.Range = New FastColoredTextBoxNS.Range(tb, place, place)
             Dim text As String = r.GetFragment("[a-zA-Z]").Text
             Me.lbWordUnderMouse.Text = text
         End Sub
@@ -1061,14 +1061,14 @@ Namespace TesterVB
             End If
             tb.VisibleRange.ClearStyle(New Style() {tb.Styles(0)})
             If tb.Selection.IsEmpty Then
-                Dim fragment As Range = tb.Selection.GetFragment("\w")
+                Dim fragment As FastColoredTextBoxNS.Range = tb.Selection.GetFragment("\w")
                 Dim text As String = fragment.Text
                 If text.Length <> 0 Then
-                    Dim ranges As Range() = tb.VisibleRange.GetRanges("\b" + text + "\b").ToArray()
+                    Dim ranges As FastColoredTextBoxNS.Range() = tb.VisibleRange.GetRanges("\b" + text + "\b").ToArray()
                     If ranges.Length > 1 Then
-                        Dim array As Range() = ranges
+                        Dim array As FastColoredTextBoxNS.Range() = ranges
                         For i As Integer = 0 To array.Length - 1
-                            Dim r As Range = array(i)
+                            Dim r As FastColoredTextBoxNS.Range = array(i)
                             r.SetStyle(tb.Styles(0))
                         Next
                     End If
@@ -1085,7 +1085,7 @@ Namespace TesterVB
             Me.HighlightInvisibleChars(e.ChangedRange)
         End Sub
 
-        Private Sub HighlightInvisibleChars(range As Range)
+        Private Sub HighlightInvisibleChars(range As FastColoredTextBoxNS.Range)
             range.ClearStyle(New Style() {Me.invisibleCharsStyle})
             If Me.btInvisibleChars.Checked Then
                 range.SetStyle(Me.invisibleCharsStyle, ".$|.\r\n|\s")
@@ -1288,13 +1288,13 @@ Namespace TesterVB
 
         Private Sub tbFind_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbFind.KeyPress
             If e.KeyChar = vbCr AndAlso Me.CurrentTB IsNot Nothing Then
-                Dim r As Range = If(Me.tbFindChanged, Me.CurrentTB.Range.Clone(), Me.CurrentTB.Selection.Clone())
+                Dim r As FastColoredTextBoxNS.Range = If(Me.tbFindChanged, Me.CurrentTB.Range.Clone(), Me.CurrentTB.Selection.Clone())
                 Me.tbFindChanged = False
                 r.[End] = New Place(Me.CurrentTB(Me.CurrentTB.LinesCount - 1).Count, Me.CurrentTB.LinesCount - 1)
                 Dim pattern As String = Regex.Escape(Me.tbFind.Text)
-                Using enumerator As IEnumerator(Of Range) = r.GetRanges(pattern).GetEnumerator()
+                Using enumerator As IEnumerator(Of FastColoredTextBoxNS.Range) = r.GetRanges(pattern).GetEnumerator()
                     If enumerator.MoveNext() Then
-                        Dim found As Range = enumerator.Current
+                        Dim found As FastColoredTextBoxNS.Range = enumerator.Current
                         found.Inverse()
                         Me.CurrentTB.Selection = found
                         Me.CurrentTB.DoSelectionVisible()

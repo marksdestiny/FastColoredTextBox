@@ -107,7 +107,7 @@ namespace Tester
                 ClearUndo();
             }
 
-            return new Range(this, StartReadPlace, Range.End).Text.TrimEnd('\r', '\n');
+            return new FastColoredTextBoxNS.Range(this, StartReadPlace, Range.End).Text.TrimEnd('\r', '\n');
         }
 
         public override void OnTextChanging(ref string text)

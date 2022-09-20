@@ -84,7 +84,7 @@ namespace Tester
         {
         }
 
-        public override void Draw(Graphics gr, Point position, Range range)
+        public override void Draw(Graphics gr, Point position, FastColoredTextBoxNS.Range range)
         {
             string text = range.Text;
             int iChar = range.Start.iChar;
@@ -111,7 +111,7 @@ namespace Tester
                 }
                 if (!replaced && text.Length>0)
                 {
-                    Range r = new Range(range.tb, iChar, range.Start.iLine, iChar+1, range.Start.iLine);
+                    FastColoredTextBoxNS.Range r = new FastColoredTextBoxNS.Range(range.tb, iChar, range.Start.iLine, iChar+1, range.Start.iLine);
                     base.Draw(gr, position, r);
                     position.Offset(range.tb.CharWidth, 0);
                     text = text.Substring(1);

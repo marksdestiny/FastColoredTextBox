@@ -78,7 +78,7 @@ Namespace TesterVB
         Private Sub fctb_TextChangedDelayed(sender As Object, e As TextChangedEventArgs)
             Me.fctb.Range.ClearStyle(New Style() {Me.KeywordsStyle, Me.FunctionNameStyle})
             Me.fctb.Range.SetStyle(Me.KeywordsStyle, "\b(and|eval|else|if|lambda|or|set|defun)\b", RegexOptions.IgnoreCase)
-            For Each found As Range In Me.fctb.GetRanges("\b(defun|DEFUN)\s+(?<range>\w+)\b")
+            For Each found As FastColoredTextBoxNS.Range In Me.fctb.GetRanges("\b(defun|DEFUN)\s+(?<range>\w+)\b")
                 Me.fctb.Range.SetStyle(Me.FunctionNameStyle, "\b" + found.Text + "\b")
             Next
         End Sub

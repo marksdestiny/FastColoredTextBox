@@ -154,7 +154,7 @@ namespace Tester
             public override string GetTextForReplace()
             {
                 //extend range
-                Range r = Parent.Fragment;
+                FastColoredTextBoxNS.Range r = Parent.Fragment;
                 Place end = r.End;
                 r.Start = enterPlace;
                 r.End = r.End;

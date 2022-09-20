@@ -45,7 +45,7 @@ namespace Tester
             HTMLSyntaxHighlight(fctb.VisibleRange);
         }
 
-        private void HTMLSyntaxHighlight(Range range)
+        private void HTMLSyntaxHighlight(FastColoredTextBoxNS.Range range)
         {
             //clear style of changed range
             range.ClearStyle(BlueStyle, MaroonStyle, RedStyle);

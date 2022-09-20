@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows.Forms;
 using FastColoredTextBoxNS;
@@ -68,7 +69,7 @@ namespace Tester
             }
 
             if (curLine < tb.LinesCount)
-                tb.Selection = new Range(tb, 0, curLine, 0, curLine);
+                tb.Selection = new FastColoredTextBoxNS.Range(tb, 0, curLine, 0, curLine);
             //
             EndUpdate();
         }
@@ -410,6 +411,11 @@ namespace Tester
                 return Object.Equals(line, ((Line) obj).line);
             }
 
+            public override int GetHashCode()
+            {
+                return base.GetHashCode();
+            }
+
             public static bool operator ==(Line line1, Line line2)
             {
                 return Object.Equals(line1.line, line2.line);
@@ -444,7 +450,7 @@ namespace Tester
             {
             }
 
-            public Line this[int i]
+            public new Line this[int i]
             {
                 get
                 {

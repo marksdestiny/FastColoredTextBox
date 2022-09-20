@@ -18,7 +18,7 @@ namespace Tester
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var r = new Range(fctb, 2);
+            var r = new FastColoredTextBoxNS.Range(fctb, 2);
             fctb.SelectedText = "new line value";
         }
 
@@ -36,7 +36,7 @@ namespace Tester
         {
         }
 
-        public override void Draw(Graphics gr, Point position, Range range)
+        public override void Draw(Graphics gr, Point position, FastColoredTextBoxNS.Range range)
         {
             //get color name
             var parts = range.Text.Split('.');

@@ -132,10 +132,10 @@ Namespace TesterVB
         End Sub
 
         Private Sub fctb_SelectionChangedDelayed(sender As Object, e As EventArgs)
-            Dim selection As Range = Me.fctb.Selection
+            Dim selection As FastColoredTextBoxNS.Range = Me.fctb.Selection
             Me.fctb.VisibleRange.ClearStyle(New Style() {Me.shortCutStyle})
             If Not selection.IsEmpty Then
-                Dim r As Range = selection.Clone()
+                Dim r As FastColoredTextBoxNS.Range = selection.Clone()
                 r.Normalize()
                 r.Start = r.[End]
                 r.GoLeft(True)
@@ -173,7 +173,7 @@ Namespace TesterVB
         End Sub
 
         Private Sub TrimSelection()
-            Dim sel As Range = Me.fctb.Selection
+            Dim sel As FastColoredTextBoxNS.Range = Me.fctb.Selection
             sel.Normalize()
             While Char.IsWhiteSpace(sel.CharAfterStart) AndAlso sel.Start < sel.[End]
                 sel.GoRight(True)

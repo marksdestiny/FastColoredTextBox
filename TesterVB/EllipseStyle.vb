@@ -7,7 +7,7 @@ Namespace TesterVB
     Friend Class EllipseStyle
         Inherits Style
 
-        Public Overrides Sub Draw(gr As Graphics, position As Point, range As Range)
+        Public Overrides Sub Draw(gr As Graphics, position As Point, range As FastColoredTextBoxNS.Range)
             Dim size As Size = Style.GetSizeOfRange(range)
             Dim rect As Rectangle = New Rectangle(position, size)
             rect.Inflate(2, 2)

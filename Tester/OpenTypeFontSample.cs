@@ -207,7 +207,7 @@ namespace Tester
         static extern uint SetTextColor(IntPtr hdc, int crColor);
 
 
-        public override void Draw(Graphics gr, Point position, Range range)
+        public override void Draw(Graphics gr, Point position, FastColoredTextBoxNS.Range range)
         {
             //create font
             IntPtr HDC = gr.GetHdc();

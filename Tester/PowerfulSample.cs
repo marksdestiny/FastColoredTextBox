@@ -246,7 +246,7 @@ namespace Tester
 
         void GoLeftBracket(FastColoredTextBox tb, char leftBracket, char rightBracket)
         {
-            Range range = tb.Selection.Clone();//need to clone because we will move caret
+            FastColoredTextBoxNS.Range range = tb.Selection.Clone();//need to clone because we will move caret
             int counter = 0;
             int maxIterations = maxBracketSearchIterations;
             while (range.GoLeftThroughFolded())//move caret left

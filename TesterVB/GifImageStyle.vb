@@ -38,7 +38,7 @@ Namespace TesterVB
         Private Sub OnFrameChanged(sender As Object, args As EventArgs)
         End Sub
 
-        Public Overrides Sub Draw(gr As Graphics, position As Point, range As Range)
+        Public Overrides Sub Draw(gr As Graphics, position As Point, range As FastColoredTextBoxNS.Range)
             Dim text As String = range.Text
             Dim iChar As Integer = range.Start.iChar
             While text <> ""
@@ -59,7 +59,7 @@ Namespace TesterVB
                     End If
                 Next
                 If Not replaced AndAlso text.Length > 0 Then
-                    Dim r As Range = New Range(range.tb, iChar, range.Start.iLine, iChar + 1, range.Start.iLine)
+                    Dim r As FastColoredTextBoxNS.Range = New FastColoredTextBoxNS.Range(range.tb, iChar, range.Start.iLine, iChar + 1, range.Start.iLine)
                     MyBase.Draw(gr, position, r)
                     position.Offset(range.tb.CharWidth, 0)
                     text = text.Substring(1)
