@@ -20,6 +20,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>Faymann.$(AssemblyName)</PackageId>
     <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
+    <Description>Fast Colored TextBox for Syntax Highlighting. The text editor component for .NET. </Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <NoWarn>1701;1702;CA1416;SYSLIB0001</NoWarn>
