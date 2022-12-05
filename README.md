@@ -1,14 +1,6 @@
 FastColoredTextBox
 ==================
 
-Fast Colored TextBox is text editor component for .NET.
-Allows you to create custom text editor with syntax highlighting.
-It works well with small, medium, large and very-very large files.
+This project is a fork of the [Fast Colored TextBox by Pavel Torgashov](https://github.com/PavelTorgashov/FastColoredTextBox) adapted for .NET 6.
 
-It has such settings as foreground color, font style, background color which can be adjusted for arbitrarily selected text symbols. One can easily gain access to a text with the use of regular expressions. WordWrap, Find/Replace, Code folding and multilevel Undo/Redo are supported as well. 
-
-![Fast Colored TextBox](http://www.codeproject.com/KB/edit/FastColoredTextBox_/fastcoloredtextbox2.png)
-
-More details http://www.codeproject.com/Articles/161871/Fast-Colored-TextBox-for-syntax-highlighting
-
-Nuget package https://www.nuget.org/packages/FCTB/
+A NuGet package is available on https://www.nuget.org/packages/Faymann.FastColoredTextBox/.
